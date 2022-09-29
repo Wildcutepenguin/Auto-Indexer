@@ -94,28 +94,6 @@ Elements["_TextLabel"].Position = UDim2.new(0.5, 0, 0, 0)
 Elements["_TextLabel"].Size = UDim2.new(1, 0, 0.150000006, 0)
 Elements["_TextLabel"].Parent = Elements["_Frame"]
 
---local textbox = Instance.new("TextBox")
---textbox.BorderSizePixel = 0
---textbox.TextScaled = true
---textbox.TextEditable = false
---textbox.ClearTextOnFocus = false
---textbox.TextColor3 = Color3.new(1,0.2,0.4)
---textbox.AnchorPoint = Vector2.new(0.5,0)
---textbox.Size = UDim2.new(1,0,0.5,0)
---textbox.Position = UDim2.new(0.5,0,0,0)
---textbox.Text = "Select the parent of the objects you would like to index"
---textbox.Parent = widget
-
---local runButton = Instance.new("TextButton")
---runButton.BorderSizePixel = 0
---runButton.TextSize = 20
---runButton.TextColor3 = Color3.new(1,0.2,0.4)
---runButton.AnchorPoint = Vector2.new(0.5,1)
---runButton.Size = UDim2.new(1,0,0.5,0)
---runButton.Position = UDim2.new(0.5,0,1,0)
---runButton.Text = "Run"
---runButton.Parent = widget
-
 local parent
 
 local function changeSelection()
