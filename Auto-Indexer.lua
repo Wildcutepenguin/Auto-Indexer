@@ -151,6 +151,7 @@ widget:GetPropertyChangedSignal("Enabled"):Connect(function()
 		end
 		if childDetection then
 			Elements["_RunButton"].Text = "Run"
+			Elements["_RunButton"].BackgroundColor3 = Color3.new(0,1,0)
 			childDetection:Disconnect()
 		end
 	end
