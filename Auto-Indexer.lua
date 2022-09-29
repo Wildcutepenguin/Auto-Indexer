@@ -19,7 +19,7 @@ local widget = plugin:CreateDockWidgetPluginGui("TestWidget", widgetInfo)
 widget.Title = "Auto-Indexer"  -- Optional widget title
 
 local toolbar = plugin:CreateToolbar("Auto-Indexer")
-local openButton = toolbar:CreateButton("Index Instances", "Index instances automatically", "rbxassetid://4458901886")
+local openButton = toolbar:CreateButton("Index Instances", "Index instances automatically", "rbxassetid://11114821897")
 
 local function onNewScriptButtonClicked()
 	widget.Enabled = not widget.Enabled
@@ -27,40 +27,105 @@ end
 
 openButton.Click:Connect(onNewScriptButtonClicked)
 
-local textbox = Instance.new("TextBox")
-textbox.BorderSizePixel = 0
-textbox.TextScaled = true
-textbox.TextEditable = false
-textbox.ClearTextOnFocus = false
-textbox.TextColor3 = Color3.new(1,0.2,0.4)
-textbox.AnchorPoint = Vector2.new(0.5,0)
-textbox.Size = UDim2.new(1,0,0.5,0)
-textbox.Position = UDim2.new(0.5,0,0,0)
-textbox.SizeConstraint = Enum.SizeConstraint.RelativeYY
-textbox.Text = "Select the parent of the objects you would like to index"
-textbox.Parent = widget
+local Elements = {
+	["_Frame"] = Instance.new("Frame");
+	["_RunButton"] = Instance.new("TextButton");
+	["_UICorner"] = Instance.new("UICorner");
+	["_TextBox"] = Instance.new("TextBox");
+	["_UICorner1"] = Instance.new("UICorner");
+	["_TextLabel"] = Instance.new("TextLabel");
+}
 
-local runButton = Instance.new("TextButton")
-runButton.BorderSizePixel = 0
-runButton.TextSize = 20
-runButton.TextColor3 = Color3.new(1,0.2,0.4)
-runButton.AnchorPoint = Vector2.new(0.5,1)
-runButton.Size = UDim2.new(1,0,0.5,0)
-runButton.Position = UDim2.new(0.5,0,1,0)
-runButton.SizeConstraint = Enum.SizeConstraint.RelativeYY
-runButton.Text = "Run"
-runButton.Parent = widget
+Elements["_Frame"].AnchorPoint = Vector2.new(0.5, 0.5)
+Elements["_Frame"].BackgroundColor3 = Color3.fromRGB(27.000002190470695, 94.0000019967556, 125.00000774860382)
+Elements["_Frame"].Position = UDim2.new(0.5, 0, 0.5, 0)
+Elements["_Frame"].Size = UDim2.new(1, 0, 1, 0)
+Elements["_Frame"].Parent = widget
+
+Elements["_RunButton"].Font = Enum.Font.PatrickHand
+Elements["_RunButton"].Text = "Run"
+Elements["_RunButton"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Elements["_RunButton"].TextScaled = true
+Elements["_RunButton"].TextSize = 14
+Elements["_RunButton"].TextStrokeTransparency = 0
+Elements["_RunButton"].TextWrapped = true
+Elements["_RunButton"].AnchorPoint = Vector2.new(0.5, 1)
+Elements["_RunButton"].BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+Elements["_RunButton"].Position = UDim2.new(0.5, 0, 1, 0)
+Elements["_RunButton"].Size = UDim2.new(1, 0, 0.25, 0)
+Elements["_RunButton"].Name = "RunButton"
+Elements["_RunButton"].Parent = Elements["_Frame"]
+
+Elements["_UICorner"].CornerRadius = UDim.new(1, 0)
+Elements["_UICorner"].Parent = Elements["_RunButton"]
+
+Elements["_TextBox"].ClearTextOnFocus = false
+Elements["_TextBox"].CursorPosition = -1
+Elements["_TextBox"].Font = Enum.Font.SourceSans
+Elements["_TextBox"].PlaceholderText = "______"
+Elements["_TextBox"].Text = ""
+Elements["_TextBox"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Elements["_TextBox"].TextEditable = false
+Elements["_TextBox"].TextScaled = true
+Elements["_TextBox"].TextSize = 14
+Elements["_TextBox"].TextStrokeTransparency = 0
+Elements["_TextBox"].TextWrapped = true
+Elements["_TextBox"].AnchorPoint = Vector2.new(0.5, 0)
+Elements["_TextBox"].BackgroundColor3 = Color3.fromRGB(68.00000354647636, 68.00000354647636, 68.00000354647636)
+Elements["_TextBox"].Position = UDim2.new(0.5, 0, 0.150000006, 0)
+Elements["_TextBox"].Size = UDim2.new(1, 0, 0.25, 0)
+Elements["_TextBox"].Parent = Elements["_Frame"]
+
+Elements["_UICorner1"].CornerRadius = UDim.new(0.200000003, 0)
+Elements["_UICorner1"].Parent = Elements["_TextBox"]
+
+Elements["_TextLabel"].Font = Enum.Font.PatrickHand
+Elements["_TextLabel"].Text = "Select the parent of the objects you would like to index"
+Elements["_TextLabel"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Elements["_TextLabel"].TextScaled = true
+Elements["_TextLabel"].TextSize = 14
+Elements["_TextLabel"].TextStrokeTransparency = 0
+Elements["_TextLabel"].TextWrapped = true
+Elements["_TextLabel"].AnchorPoint = Vector2.new(0.5, 0)
+Elements["_TextLabel"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Elements["_TextLabel"].BackgroundTransparency = 1
+Elements["_TextLabel"].BorderSizePixel = 0
+Elements["_TextLabel"].Position = UDim2.new(0.5, 0, 0, 0)
+Elements["_TextLabel"].Size = UDim2.new(1, 0, 0.150000006, 0)
+Elements["_TextLabel"].Parent = Elements["_Frame"]
+
+--local textbox = Instance.new("TextBox")
+--textbox.BorderSizePixel = 0
+--textbox.TextScaled = true
+--textbox.TextEditable = false
+--textbox.ClearTextOnFocus = false
+--textbox.TextColor3 = Color3.new(1,0.2,0.4)
+--textbox.AnchorPoint = Vector2.new(0.5,0)
+--textbox.Size = UDim2.new(1,0,0.5,0)
+--textbox.Position = UDim2.new(0.5,0,0,0)
+--textbox.Text = "Select the parent of the objects you would like to index"
+--textbox.Parent = widget
+
+--local runButton = Instance.new("TextButton")
+--runButton.BorderSizePixel = 0
+--runButton.TextSize = 20
+--runButton.TextColor3 = Color3.new(1,0.2,0.4)
+--runButton.AnchorPoint = Vector2.new(0.5,1)
+--runButton.Size = UDim2.new(1,0,0.5,0)
+--runButton.Position = UDim2.new(0.5,0,1,0)
+--runButton.Text = "Run"
+--runButton.Parent = widget
 
 local parent
 
 local function changeSelection()
-	if runButton.Text == "Run" then
+	if Elements["_RunButton"].Text == "Run" then
 		local selectedObjects = Selection:Get()
 		if #selectedObjects == 1 then
 			parent = selectedObjects[1]
-			textbox.Text = selectedObjects[1].Name
+			Elements["_TextBox"].Text = selectedObjects[1].Name
 		else
-			textbox.Text = ""
+			Elements["_TextBox"].Text = ""
 		end
 	end
 end
@@ -71,8 +136,9 @@ local childDetection
 
 local function onRunButtonClick()
 	if parent then
-		if runButton.Text == "Run" then
-			runButton.Text = "Stop"
+		if Elements["_RunButton"].Text == "Run" then
+			Elements["_RunButton"].Text = "Stop"
+			Elements["_RunButton"].BackgroundColor3 = Color3.new(1,0,0)
 			childDetection = parent.ChildAdded:Connect(function(newChild)
 				local highestInt = 0
 				for i, v in parent:GetChildren() do
@@ -87,14 +153,15 @@ local function onRunButtonClick()
 			end)
 		else
 			if childDetection then
-				runButton.Text = "Run"
+				Elements["_RunButton"].Text = "Run"
+				Elements["_RunButton"].BackgroundColor3 = Color3.new(0,1,0)
 				childDetection:Disconnect()
 			end
 		end
 	end
 end
 
-runButton.MouseButton1Click:Connect(onRunButtonClick)
+Elements["_RunButton"].MouseButton1Click:Connect(onRunButtonClick)
 
 widget:GetPropertyChangedSignal("Enabled"):Connect(function()
 	openButton:SetActive(widget.Enabled)
@@ -105,7 +172,7 @@ widget:GetPropertyChangedSignal("Enabled"):Connect(function()
 			selectionConnection:Disconnect()
 		end
 		if childDetection then
-			runButton.Text = "Run"
+			Elements["_RunButton"].Text = "Run"
 			childDetection:Disconnect()
 		end
 	end
