@@ -121,7 +121,7 @@ local function onRunButtonClick()
 				local highestInt = 0
 				for i, v in parent:GetChildren() do
 					if v.Name:match("%d") then
-						local num = tonumber(string.match(v.Name,"%d"))
+						local num = tonumber(string.match(v.Name,"%d+"))
 						if num > highestInt then
 							highestInt = num
 						end
